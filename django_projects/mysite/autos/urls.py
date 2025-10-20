@@ -2,7 +2,6 @@ from django.urls import path
 from . import views
 from django.views.generic import TemplateView
 
-# https://docs.djangoproject.com/en/4.2/topics/http/urls/
 app_name = 'autos'
 urlpatterns = [
     path('', views.MainView.as_view(), name='all'),
@@ -14,5 +13,3 @@ urlpatterns = [
     path('lookup/<int:pk>/update/', views.MakeUpdate.as_view(), name='make_update'),
     path('lookup/<int:pk>/delete/', views.MakeDelete.as_view(), name='make_delete'),
 ]
-
-# Note that make_ and auto_ give us uniqueness within this application

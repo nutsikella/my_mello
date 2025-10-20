@@ -15,6 +15,7 @@ urlpatterns = [
     path('hello/', include('hello.urls')),
     path('polls/', include('polls.urls')),
     path('autos/', include('autos.urls')),
+    path('cats/', include('cats.urls')),
     path('', RedirectView.as_view(url='/autos/')),  # Redirect root to autos
     re_path(r'^site/(?P<path>.*)$', serve,
         {'document_root': SITE_ROOT, 'show_indexes': True},

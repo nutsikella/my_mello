@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Cats</title>
+</head>
+<body>
+    <h1>Cats</h1>
+    
+    <p>
+        <a href="{% url 'cats:cat_list' %}">Cats</a> |
+        <a href="{% url 'cats:breed_list' %}">Breeds</a>
+    </p>
+
+    <p>We have {{ breed_count }} breed{{ breed_count|pluralize }} and {{ cat_list|length }} cat{{ cat_list|length|pluralize }}.</p>
+
+    {% if cat_list %}
+        <ul>
+            {% for cat in cat_list %}
+            <li>
+                {{ cat.nickname }} ({{ cat.breed }})
+                (<a href="{% url 'cats:cat_update' cat.id %}">Update</a> |
+                <a href="{% url 'cats:cat_delete' cat.id %}">Delete</a>)
+            </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>There are no cats in the library.</p>
+    {% endif %}
+
+    <p><a href="{% url 'cats:cat_create' %}">Add a cat</a></p>
+</body>
+</html>
