@@ -1,23 +1,21 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Delete Cat</title>
-</head>
-<body>
-    <h1>Delete Cat</h1>
-    
-    <p>
-        <a href="{% url 'cats:cat_list' %}">Cats</a> |
-        <a href="{% url 'cats:breed_list' %}">Breeds</a>
-    </p>
+{% extends "base_bootstrap.html" %}
 
-    <p>Are you sure you want to delete the cat: {{ cat.nickname }}?</p>
+{% block title %}Delete Cat{% endblock %}
 
-    <form method="post">
-        {% csrf_token %}
-        <input type="submit" value="Yes, delete.">
-    </form>
+{% block content %}
+<h1>Delete Cat</h1>
 
-    <p><a href="{% url 'cats:cat_list' %}">Cancel</a></p>
-</body>
-</html>
+<p>
+    <a href="{% url 'cats:cat_list' %}">Cats</a> |
+    <a href="{% url 'cats:breed_list' %}">Breeds</a>
+</p>
+
+<p>Are you sure you want to delete the cat: {{ cat.nickname }}?</p>
+
+<form method="post">
+    {% csrf_token %}
+    <input type="submit" value="Yes, delete.">
+</form>
+
+<p><a href="{% url 'cats:cat_list' %}">Cancel</a></p>
+{% endblock %}

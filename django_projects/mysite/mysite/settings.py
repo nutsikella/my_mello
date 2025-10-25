@@ -129,7 +129,10 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": [BASE_DIR / 'templates'],  # ← ADD THIS LINE
+        'DIRS': [
+            BASE_DIR / 'templates',           # Global templates
+            BASE_DIR / 'cats' / 'templates',  # Cats app templates
+        ],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -140,9 +143,8 @@ TEMPLATES = [
         },
     },
 ]
-# Add these at the bottom of your settings.py
-LOGIN_REDIRECT_URL = '/cats/'  # Where to go after login
-LOGOUT_REDIRECT_URL = '/'      # Where to go after logout
+LOGIN_REDIRECT_URL = '/cats/'  
+LOGOUT_REDIRECT_URL = '/'      
 
 # Or if using named URLs:
 # LOGIN_REDIRECT_URL = 'cats:cat_list'
