@@ -37,7 +37,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-    "cats.apps.CatsConfig",
     "polls.apps.PollsConfig",
     "hello.apps.HelloConfig",
     "home.apps.HomeConfig",
@@ -143,8 +142,3 @@ TEMPLATES = [
         },
     },
 ]
-LOGIN_REDIRECT_URL = '/cats/'  
-LOGOUT_REDIRECT_URL = '/'      
-
-# Or if using named URLs:
-# LOGIN_REDIRECT_URL = 'cats:cat_list'
