@@ -19,33 +19,40 @@ class BreedList(LoginRequiredMixin, View):
         ctx = {'breed_list': bl}
         return render(request, 'cats/breed_list.html', ctx)
     
-# following views are all generic
+# Cat views
 class CatCreate(LoginRequiredMixin, CreateView):
     model = Cat
     fields = '__all__'
     success_url = reverse_lazy('cats:cat_list')
+    template_name = 'cats/cat_form.html'  # Used for creating cats
 
 class CatUpdate(LoginRequiredMixin, UpdateView):
     model = Cat
     fields = '__all__'
     success_url = reverse_lazy('cats:cat_list')
+    template_name = 'cats/cat_form.html'  # Used for updating cats
 
 class CatDelete(LoginRequiredMixin, DeleteView):
     model = Cat
     fields = '__all__'
     success_url = reverse_lazy('cats:cat_list')
+    template_name = 'cats/cat_confirm_delete.html'  # Used for deleting cats
 
+# Breed views
 class BreedCreate(LoginRequiredMixin, CreateView):
     model = Breed
     fields = '__all__'
     success_url = reverse_lazy('cats:breed_list')
+    template_name = 'cats/breed_form.html'  # Used for creating breeds
 
 class BreedUpdate(LoginRequiredMixin, UpdateView):
     model = Breed
     fields = '__all__'
     success_url = reverse_lazy('cats:breed_list')
+    template_name = 'cats/breed_form.html'  # Used for updating breeds
 
 class BreedDelete(LoginRequiredMixin, DeleteView):
     model = Breed
     fields = '__all__'
     success_url = reverse_lazy('cats:breed_list')
+    template_name = 'cats/breed_confirm_delete.html'  # Used for deleting breeds
