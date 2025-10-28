@@ -1,27 +1,24 @@
-from ads.models import Article
+from ads.models import Ad
 from ads.owner import OwnerListView, OwnerDetailView, OwnerCreateView, OwnerUpdateView, OwnerDeleteView
 
+class AdListView(OwnerListView):
+    model = Ad
+    template_name = "ads/ad_list.html"
 
-class ArticleListView(OwnerListView):
-    model = Article
-    # By convention:
-    # template_name = "myarts/article_list.html"
+class AdDetailView(OwnerDetailView):
+    model = Ad
+    template_name = "ads/ad_detail.html"
 
+class AdCreateView(OwnerCreateView):
+    model = Ad
+    fields = ['title', 'price', 'text']
+    template_name = "ads/ad_form.html"
 
-class ArticleDetailView(OwnerDetailView):
-    model = Article
+class AdUpdateView(OwnerUpdateView):
+    model = Ad
+    fields = ['title', 'price', 'text']
+    template_name = "ads/ad_form.html"
 
-class ArticleCreateView(OwnerCreateView):
-    model = Article
-    # List the fields to copy from the Article model to the Article form
-    fields = ['title', 'text']
-
-class ArticleUpdateView(OwnerUpdateView):
-    model = Article
-    fields = ['title', 'text']
-    # This would make more sense
-    # fields_exclude = ['owner', 'created_at', 'updated_at']
-
-
-class ArticleDeleteView(OwnerDeleteView):
-    model = Article
+class AdDeleteView(OwnerDeleteView):
+    model = Ad
+    template_name = "ads/ad_confirm_delete.html"
