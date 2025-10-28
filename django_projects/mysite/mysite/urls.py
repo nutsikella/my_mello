@@ -11,6 +11,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),  # Keep
     path('accounts/', include('django.contrib.auth.urls')),  # Keep
     path('ads/', include('ads.urls')),
+    path('accounts/login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
+    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
     re_path(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
 ]
 
