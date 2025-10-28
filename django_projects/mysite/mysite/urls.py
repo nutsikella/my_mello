@@ -12,7 +12,12 @@ urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),  # Keep
     path('ads/', include('ads.urls')),
     path('accounts/login/', auth_views.LoginView.as_view(template_name='registration/login.html'), name='login'),
-    path('accounts/logout/', auth_views.LogoutView.as_view(next_page='/'), name='logout'),
+    path('accounts/logout/', 
+         auth_views.LogoutView.as_view(
+             template_name='registration/logged_out.html',
+             next_page=None  # Explicitly set to None to use the template
+         ), 
+         name='logout'),
     re_path(r'^oauth/', include('social_django.urls', namespace='social')),  # Keep
 ]
 
