@@ -1,8 +1,16 @@
 {% extends "base_menu.html" %}
 
 {% block content %}
+<script>
+    // Show message for 2 seconds then redirect
+    setTimeout(function() {
+        window.location.href = "{% url 'ads:all' %}";
+    }, 2000);
+</script>
+
 <h2>Logged Out</h2>
 <p>You have been successfully logged out.</p>
+<p>Redirecting to home page in 2 seconds...</p>
 <p><a href="{% url 'login' %}">Click here to log in again.</a></p>
 <p><a href="{% url 'ads:all' %}">Return to home page</a></p>
 {% endblock %}
